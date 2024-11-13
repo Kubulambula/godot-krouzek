@@ -1,0 +1,32 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://ig63k72me636"]
+
+[ext_resource type="Texture2D" uid="uid://cwa8qdekmxgyh" path="res://assets/candle_1.png" id="1_lonpl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67h60"]
+atlas = ExtResource("1_lonpl")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5os8t"]
+atlas = ExtResource("1_lonpl")
+region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22xfh"]
+atlas = ExtResource("1_lonpl")
+region = Rect2(400, 0, 200, 200)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_67h60")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5os8t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22xfh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]

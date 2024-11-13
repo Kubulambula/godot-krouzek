@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://8qs1laltxyld"]
+
+[ext_resource type="PackedScene" uid="uid://ccdo30bsfxxef" path="res://obtacle.tscn" id="2_0t1f2"]
+[ext_resource type="PackedScene" uid="uid://cjw5pq33rpkll" path="res://jusmp_character.tscn" id="2_4dgeg"]
+[ext_resource type="PackedScene" uid="uid://bqm2vaxra0qc6" path="res://change_level_area.tscn" id="3_0qc4l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6kb10"]
+
+[node name="Level2" type="Node2D"]
+
+[node name="Node2D2" parent="." instance=ExtResource("2_0t1f2")]
+position = Vector2(522, 379)
+
+[node name="JumpCharacter" parent="." instance=ExtResource("2_4dgeg")]
+position = Vector2(442, 262)
+
+[node name="Area2D" parent="." instance=ExtResource("3_0qc4l")]
+position = Vector2(263, 248)
+level_to_change = "res://level.tscn"
+
+[node name="Area2D2" parent="." instance=ExtResource("3_0qc4l")]
+position = Vector2(720, 241)
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(624, -63)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("CircleShape2D_6kb10")

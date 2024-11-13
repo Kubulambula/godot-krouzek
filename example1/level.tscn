@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3idx7uue5hmp"]
+
+[ext_resource type="PackedScene" uid="uid://cjw5pq33rpkll" path="res://jusmp_character.tscn" id="2_53n5h"]
+[ext_resource type="PackedScene" uid="uid://ccdo30bsfxxef" path="res://obtacle.tscn" id="2_vmtla"]
+[ext_resource type="PackedScene" uid="uid://bqm2vaxra0qc6" path="res://change_level_area.tscn" id="3_nt6l4"]
+
+[node name="Level" type="Node2D"]
+
+[node name="Node2D2" parent="." instance=ExtResource("2_vmtla")]
+position = Vector2(361, 553)
+
+[node name="Node2D4" parent="." instance=ExtResource("2_vmtla")]
+position = Vector2(862, 393)
+
+[node name="Node2D3" parent="." instance=ExtResource("2_vmtla")]
+position = Vector2(177, 227)
+rotation = 1.33345
+
+[node name="JumpCharacter" parent="." instance=ExtResource("2_53n5h")]
+position = Vector2(780, 253)
+
+[node name="Area2D" parent="." instance=ExtResource("3_nt6l4")]
+position = Vector2(1028, 214)

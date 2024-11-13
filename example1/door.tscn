@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://dm0uvvdtnsly5"]
+
+[ext_resource type="Script" path="res://door.gd" id="1_nhnml"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ntl3h"]
+size = Vector2(100, 300)
+
+[sub_resource type="Animation" id="Animation_ep7cj"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -1.5708]
+}
+
+[sub_resource type="Animation" id="Animation_ju47b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ueqgp"]
+_data = {
+"RESET": SubResource("Animation_ju47b"),
+"open": SubResource("Animation_ep7cj")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wbrjm"]
+size = Vector2(181, 224)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_nhnml")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
+unique_name_in_owner = true
+offset_right = 100.0
+offset_bottom = 300.0
+color = Color(0.47451, 0.270588, 0.0901961, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(50, 150)
+shape = SubResource("RectangleShape2D_ntl3h")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ueqgp")
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-99, 136)
+shape = SubResource("RectangleShape2D_wbrjm")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

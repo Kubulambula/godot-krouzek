@@ -1,0 +1,81 @@
+[gd_scene load_steps=6 format=3 uid="uid://s3xt5fx2lob3"]
+
+[ext_resource type="SpriteFrames" uid="uid://ig63k72me636" path="res://assets/candle.tres" id="1_5pq6a"]
+[ext_resource type="Texture2D" uid="uid://1ycyho6mx8my" path="res://assets/light_texture_ball.png" id="2_s0q64"]
+
+[sub_resource type="Animation" id="Animation_1uhvn"]
+resource_name = "candle"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.466667, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 0.328866, 0.261355, 1), Color(0.334274, 0.585097, 1, 1), Color(3.94672e-06, 0.688643, 0.620713, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("PointLight2D:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.566667, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 2.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_w51f2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.945011, 0.40708, 0.163584, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointLight2D:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_euvr1"]
+_data = {
+"RESET": SubResource("Animation_w51f2"),
+"candle": SubResource("Animation_1uhvn")
+}
+
+[node name="Candle" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_5pq6a")
+autoplay = "default"
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.945011, 0.40708, 0.163584, 1)
+texture = ExtResource("2_s0q64")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_euvr1")
+}
+autoplay = "candle"
