@@ -1,31 +1,30 @@
-[gd_scene load_steps=6 format=3 uid="uid://cjw5pq33rpkll"]
+[gd_scene load_steps=5 format=3 uid="uid://cjw5pq33rpkll"]
 
 [ext_resource type="Script" path="res://jump_character.gd" id="1_igw27"]
 [ext_resource type="Texture2D" uid="uid://be4nu3prp7q58" path="res://assets/icon.svg" id="2_05sn8"]
-[ext_resource type="Script" path="res://hurtbox.gd" id="3_jnfex"]
+[ext_resource type="SpriteFrames" uid="uid://dc14x0gorsgqm" path="res://assets/lapse.tres" id="3_tfmk3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_muggq"]
 size = Vector2(128, 128)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qvsgw"]
-size = Vector2(100, 20)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_igw27")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("2_05sn8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_muggq")
 
-[node name="Hurtbox" type="Area2D" parent="."]
-position = Vector2(112, -12)
-rotation = -0.773901
-script = ExtResource("3_jnfex")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-10, -78)
+scale = Vector2(0.35, 0.35)
+sprite_frames = ExtResource("3_tfmk3")
+animation = &"jump_air"
+autoplay = "idle"
+frame_progress = 0.819623
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-shape = SubResource("RectangleShape2D_qvsgw")
+[node name="Camera2D" type="Camera2D" parent="."]
 
-[connection signal="body_entered" from="Hurtbox" to="Hurtbox" method="_on_body_entered"]
-[connection signal="body_exited" from="Hurtbox" to="Hurtbox" method="_on_body_exited"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
