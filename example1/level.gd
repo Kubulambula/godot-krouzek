@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 func spawn_real_ball():
 	var ball = load("res://ball.tscn").instantiate()
 	add_child(ball)
-	
+
 
 func spawn_box():
 	var rigidbody = RigidBody2D.new()
