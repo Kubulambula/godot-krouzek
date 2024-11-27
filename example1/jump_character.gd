@@ -39,7 +39,8 @@ func on_floor():
 
 
 func in_air():
-	$AnimatedSprite2D.play("jump_air")
+	return
+	#$AnimatedSprite2D.play("jump_air")
 
 
 func _on_animated_sprite_2d_animation_finished() -> void:

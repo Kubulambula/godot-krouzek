@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://8qs1laltxyld"]
 
 [ext_resource type="PackedScene" uid="uid://ccdo30bsfxxef" path="res://obtacle.tscn" id="2_0t1f2"]
-[ext_resource type="PackedScene" uid="uid://cjw5pq33rpkll" path="res://jusmp_character.tscn" id="2_4dgeg"]
+[ext_resource type="PackedScene" uid="uid://cjw5pq33rpkll" path="res://jump_character.tscn" id="2_4dgeg"]
 [ext_resource type="PackedScene" uid="uid://bqm2vaxra0qc6" path="res://change_level_area.tscn" id="3_0qc4l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6kb10"]
