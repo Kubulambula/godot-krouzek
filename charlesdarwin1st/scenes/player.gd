@@ -2,16 +2,20 @@ extends CharacterBody2D
 
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const JUMP_VELOCITY = -200.0
 
-var gravity = Vector2(0, 350)
+var gravity = Vector2(0, 500)
 
 var hp = 100
 
 
+func jump_pad_bounce():
+	velocity = JUMP_VELOCITY * gravity.normalized()
+
+
 func _physics_process(delta: float) -> void:
 	UI.ui_scene.set_hp(hp)
-	 Add the gravity.
+	# Add the gravity.
 	#if not is_on_floor():
 	velocity += gravity * delta
 	
@@ -19,7 +23,7 @@ func _physics_process(delta: float) -> void:
 		hp = hp - 10
 	
 	if Input.is_action_just_pressed("flip_gravity"):
-		gravity = -gravity
+		gravity= -gravity
 		$AnimatedSprite2D.flip_v = not $AnimatedSprite2D.flip_v
 
 	# Handle jump
