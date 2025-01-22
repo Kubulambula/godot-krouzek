@@ -5,7 +5,7 @@ var pause_scene
 
 
 func _ready() -> void:
-	pause_scene = load("res://assets/pause_menu.tscn").instantiate()
+	pause_scene = load("res://scenes/pause_menu.tscn").instantiate()
 	add_child(pause_scene)
 	pause_scene.unpause()
 

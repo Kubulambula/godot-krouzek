@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://baq8stixw8qal"]
+
+[ext_resource type="Script" path="res://scenes/pause_menu.gd" id="1_8lr7n"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_8lr7n")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1177.0
+offset_bottom = 664.0
+color = Color(0.25098, 0.25098, 0.25098, 0.564706)
+
+[node name="ContinueButton" type="Button" parent="."]
+offset_left = 470.0
+offset_top = 139.0
+offset_right = 549.0
+offset_bottom = 170.0
+scale = Vector2(4, 4)
+text = "Continue"
+
+[node name="ExitButton" type="Button" parent="."]
+offset_left = 477.0
+offset_top = 364.0
+offset_right = 556.0
+offset_bottom = 395.0
+scale = Vector2(4, 4)
+text = "Exit"
+
+[connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
