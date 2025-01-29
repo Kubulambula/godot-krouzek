@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://prv3v6ohrae8"]
+[gd_scene load_steps=2 format=3 uid="uid://prv3v6ohrae8"]
 
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_c8qu5"]
-[ext_resource type="AudioStream" uid="uid://drbqtwch2uv15" path="res://assets/Fun Background.mp3" id="2_8idsp"]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_c8qu5")
@@ -14,6 +13,8 @@ offset_bottom = 331.0
 scale = Vector2(5, 5)
 text = "Play"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Button"]
+
 [node name="Label" type="Label" parent="."]
 offset_left = 234.0
 offset_top = 105.0
@@ -21,9 +22,5 @@ offset_right = 374.0
 offset_bottom = 128.0
 scale = Vector2(5, 5)
 text = "Super ultra hra"
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_8idsp")
-autoplay = true
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

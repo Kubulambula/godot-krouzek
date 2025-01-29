@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Pause="*res://scenes/pause.gd"
 UI="*res://assets/ui.gd"
+Music="*res://music.gd"
 
 [display]
 
