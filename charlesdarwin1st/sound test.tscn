@@ -7,16 +7,16 @@ script/source = "extends AudioStreamPlayer
 var step_1 = load(\"res://assets/step_1.wav\")
 var step_2 = load(\"res://assets/step_2.wav\")
 var step_3 = load(\"res://assets/step_3.wav\")
-var step_4 = load(\"res://assets/step_4.wav\")
+var step_4= load(\"res://assets/step_4.wav\")
 var step_5 = load(\"res://assets/step_5.wav\")
 
 var normal_step = [
-	load(\"res://assets/step_1.wav\"),
-	load(\"res://assets/step_2.wav\"),
-	load(\"res://assets/step_3.wav\"),
-	load(\"res://assets/step_4.wav\"),
-	load(\"res://assets/step_5.wav\"),
-	load(\"res://assets/step_6.wav\"),
+	load(\"res://assets/step_1.wav\"), # 0
+	load(\"res://assets/step_2.wav\"), # 1
+	load(\"res://assets/step_3.wav\"), # 2
+	load(\"res://assets/step_4.wav\"), # 3
+	load(\"res://assets/step_5.wav\"), # 4
+	load(\"res://assets/step_6.wav\"), # 5
 ]
 
 var dirt_step = [
@@ -24,7 +24,7 @@ var dirt_step = [
 	load(\"res://assets/step_3.wav\"),
 	load(\"res://assets/step_6.wav\"),
 	load(\"res://assets/step_5.wav\"),
-	load(\"res://assets/step_1.wav\"),
+	load(\"res://assets/step_1.wav\").
 	load(\"res://assets/step_4.wav\"),
 ]
 
