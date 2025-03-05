@@ -11,6 +11,13 @@ var step_sounds = [
 	load("res://assets/step_4.wav"),
 ]
 
+var current_character = "karel"
+@onready var characters = {
+	"darwin": $Darwin,
+	"karel": $Karel,
+	"syd": $Syd
+}
+
 var gravity = Vector2(0, 500)
 
 var hp = 100
@@ -30,12 +37,12 @@ func _physics_process(delta: float) -> void:
 		hp = hp - 10
 	
 	if Input.is_action_just_pressed("flip_gravity"):
-		gravity= -gravity
+		gravity = -gravity
 		$AnimatedSprite2D.flip_v = not $AnimatedSprite2D.flip_v
 
 	# Handle jump
 	if Input.is_action_just_pressed("ui_up") and (is_on_floor() or is_on_ceiling()):
-		velocity=JUMP_VELOCITY * gravity.normalized()
+		characters[current_character].jump()
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -45,11 +52,13 @@ func _physics_process(delta: float) -> void:
 			$Timer.wait_time = 0.2
 			$Timer.start()
 			play_random_sound(step_sounds)
-		$AnimatedSprite2D.play("run")
+		#$AnimatedSprite2D.play("run")
 		velocity.x = direction * SPEED
+		characters[current_character].run()
 	else:
-		$AnimatedSprite2D.play("idle")
+		#$AnimatedSprite2D.play("idle")
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+		characters[current_character].idle()
 	
 	move_and_slide()
 

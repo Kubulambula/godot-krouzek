@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0d62hreecv26"]
+[gd_scene load_steps=8 format=3 uid="uid://d0d62hreecv26"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_sieee"]
 [ext_resource type="SpriteFrames" uid="uid://bcugf5q1d8pmu" path="res://assets/player/player.tres" id="1_vvgc3"]
+[ext_resource type="Script" path="res://scenes/darwin.gd" id="2_72eg6"]
 [ext_resource type="AudioStream" uid="uid://cca23qrjy7mh5" path="res://assets/step_1.wav" id="3_8qq4b"]
+[ext_resource type="Script" path="res://scenes/karel.gd" id="3_fawbs"]
+[ext_resource type="Script" path="res://scenes/syd.gd" id="4_7lge2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nvutp"]
 size = Vector2(20, 23)
@@ -11,6 +14,15 @@ size = Vector2(20, 23)
 collision_layer = 3
 script = ExtResource("1_sieee")
 
+[node name="Darwin" type="Node2D" parent="."]
+script = ExtResource("2_72eg6")
+
+[node name="Karel" type="Node2D" parent="."]
+script = ExtResource("3_fawbs")
+
+[node name="Syd" type="Node2D" parent="."]
+script = ExtResource("4_7lge2")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_nvutp")
@@ -18,9 +30,8 @@ shape = SubResource("RectangleShape2D_nvutp")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = ExtResource("1_vvgc3")
-animation = &"idle"
-autoplay = "idle"
-frame_progress = 0.64786
+animation = &"run_karel"
+autoplay = "idle_darwin"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)

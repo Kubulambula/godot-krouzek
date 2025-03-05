@@ -1,0 +1,37 @@
+[gd_scene load_steps=9 format=3 uid="uid://xou30invvpmn"]
+
+[ext_resource type="Texture2D" uid="uid://kqoi70gaa8wf" path="res://icon.svg" id="1_m1la8"]
+
+[sub_resource type="Curve" id="Curve_o1bkh"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_t7umh"]
+curve = SubResource("Curve_o1bkh")
+
+[sub_resource type="Gradient" id="Gradient_7ywgj"]
+offsets = PackedFloat32Array(0, 0.510345, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.353408, 0.353408, 0.353409, 1, 0.796018, 0.796018, 0.796018, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8a0vf"]
+gradient = SubResource("Gradient_7ywgj")
+
+[sub_resource type="Curve" id="Curve_6b2rg"]
+min_value = 0.1
+_data = [Vector2(0, 0.1), 0.0, 0.0, 0, 0, Vector2(1, 0.335019), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_n5157"]
+curve = SubResource("Curve_6b2rg")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5ke2h"]
+particle_flag_disable_z = true
+scale_curve = SubResource("CurveTexture_n5157")
+color_ramp = SubResource("GradientTexture1D_8a0vf")
+alpha_curve = SubResource("CurveTexture_t7umh")
+
+[node name="GPUParticles2D" type="GPUParticles2D"]
+position = Vector2(164, 60)
+process_material = SubResource("ParticleProcessMaterial_5ke2h")
+texture = ExtResource("1_m1la8")
+preprocess = 1.0

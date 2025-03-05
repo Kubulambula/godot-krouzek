@@ -8,7 +8,7 @@ func _ready() -> void:
 	music_player.bus = "Music"
 	music_player.stream = load("res://assets/Fun Background.mp3")
 	add_child(music_player)
-	music_player.play()
+	#music_player.play()
 	
 	
 #	linear_to_db()
