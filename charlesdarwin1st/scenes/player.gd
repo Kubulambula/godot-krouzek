@@ -1,9 +1,6 @@
 extends CharacterBody2D
 
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -200.0
-
 var step_sounds = [
 	load("res://assets/step_1.wav"),
 	load("res://assets/step_2.wav"),
@@ -11,12 +8,13 @@ var step_sounds = [
 	load("res://assets/step_4.wav"),
 ]
 
-var current_character = "karel"
+var current_character = "syd"
 @onready var characters = {
 	"darwin": $Darwin,
 	"karel": $Karel,
 	"syd": $Syd
 }
+
 
 var gravity = Vector2(0, 500)
 
@@ -24,7 +22,7 @@ var hp = 100
 
 
 func jump_pad_bounce():
-	velocity = JUMP_VELOCITY * gravity.normalized()
+	characters[current_character].bounce()
 
 
 func _physics_process(delta: float) -> void:
@@ -36,10 +34,9 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("take_damage"):
 		hp = hp - 10
 	
-	if Input.is_action_just_pressed("flip_gravity"):
-		gravity = -gravity
-		$AnimatedSprite2D.flip_v = not $AnimatedSprite2D.flip_v
-
+	if Input.is_action_just_pressed("ability"):
+		characters[current_character].ability()
+	
 	# Handle jump
 	if Input.is_action_just_pressed("ui_up") and (is_on_floor() or is_on_ceiling()):
 		characters[current_character].jump()
@@ -53,12 +50,12 @@ func _physics_process(delta: float) -> void:
 			$Timer.start()
 			play_random_sound(step_sounds)
 		#$AnimatedSprite2D.play("run")
-		velocity.x = direction * SPEED
-		characters[current_character].run()
+		characters[current_character].run(direction)
+		characters[current_character].run_animation()
 	else:
 		#$AnimatedSprite2D.play("idle")
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		characters[current_character].idle()
+		velocity.x = 0
+		characters[current_character].idle_animation()
 	
 	move_and_slide()
 

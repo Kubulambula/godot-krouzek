@@ -30,7 +30,7 @@ shape = SubResource("RectangleShape2D_nvutp")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = ExtResource("1_vvgc3")
-animation = &"run_karel"
+animation = &"idle_borivoj"
 autoplay = "idle_darwin"
 
 [node name="Camera2D" type="Camera2D" parent="."]
