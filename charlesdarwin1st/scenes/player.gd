@@ -8,7 +8,7 @@ var step_sounds = [
 	load("res://assets/step_4.wav"),
 ]
 
-var current_character = "syd"
+var current_character = "darwin"
 @onready var characters = {
 	"darwin": $Darwin,
 	"karel": $Karel,
@@ -17,6 +17,7 @@ var current_character = "syd"
 
 
 var gravity = Vector2(0, 500)
+#Vector2(0, -500)
 
 var hp = 100
 
@@ -25,7 +26,26 @@ func jump_pad_bounce():
 	characters[current_character].bounce()
 
 
+func switch_to_character(character_to_change_to):
+	if current_character == "syd" and character_to_change_to != "syd":
+		if gravity.y < 0:
+			characters["syd"].ability()
+	current_character = character_to_change_to
+
+func switch_characters():
+	if Input.is_action_just_pressed("character1"):
+		switch_to_character("darwin")
+	elif Input.is_action_just_pressed("character2"):
+		switch_to_character("syd")
+	elif Input.is_action_just_pressed("character3"):
+		switch_to_character("karel")
+	elif Input.is_action_just_pressed("character4"):
+		print("character 4")
+
+
 func _physics_process(delta: float) -> void:
+	switch_characters()
+	
 	UI.ui_scene.set_hp(hp)
 	# Add the gravity.
 	#if not is_on_floor():

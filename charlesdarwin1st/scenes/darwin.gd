@@ -5,7 +5,7 @@ func ability():
 	print("nic neumim")
 
 func jump():
-	get_parent().velocity = -200 * get_parent().gravity.normalized()
+	get_parent().velocity = -300 * get_parent().gravity.normalized()
 
 func bounce():
 	get_parent().velocity = -300 * get_parent().gravity.normalized()

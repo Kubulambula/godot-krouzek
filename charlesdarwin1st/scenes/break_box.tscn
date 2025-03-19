@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://bx0enmy7idriq"]
+
+[ext_resource type="Script" path="res://scenes/break_box.gd" id="1_ehrgh"]
+[ext_resource type="Texture2D" uid="uid://dka36338lwfdr" path="res://assets/tilemap_packed.png" id="1_ry05v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mi0mh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_brxb3"]
+atlas = ExtResource("1_ry05v")
+region = Rect2(180, 0, 18, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gjtll"]
+size = Vector2(18, 4)
+
+[node name="BreakBox" type="StaticBody2D"]
+script = ExtResource("1_ehrgh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mi0mh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = SubResource("AtlasTexture_brxb3")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -11)
+shape = SubResource("RectangleShape2D_gjtll")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

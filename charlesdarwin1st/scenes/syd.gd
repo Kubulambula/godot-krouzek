@@ -7,7 +7,7 @@ func ability():
 
 
 func jump():
-	get_parent().velocity = -500 * get_parent().gravity.normalized()
+	get_parent().velocity = -200 * get_parent().gravity.normalized()
 
 func bounce():
 	get_parent().velocity = -350 * get_parent().gravity.normalized()
