@@ -5,13 +5,13 @@ func ability():
 	pass
 
 func jump():
-	print("jsem sikulka ale neskacu")
+	get_parent().velocity = -100 * get_parent().gravity.normalized()
 
 func bounce():
 	get_parent().velocity = -300 * get_parent().gravity.normalized()
 
 func run(direction):
-	get_parent().velocity.x = direction * 300
+	get_parent().velocity.x = direction * 150
 
 func run_animation():
 	# get_parent() = $".."
