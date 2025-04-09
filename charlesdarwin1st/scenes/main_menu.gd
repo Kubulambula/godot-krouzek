@@ -1,6 +1,14 @@
 extends Node2D
 
 
+func _ready() -> void:
+	var config = ConfigFile.new()
+	config.load("user://pepa.txt")
+	$HSlider.value = config.get_value("Audio", "MasterVolume", 0.5)
+	$HSlider2.value = config.get_value("Audio", "MusicVolume", 0.5)
+	$HSlider3.value = config.get_value("Audio", "SFXVolume", 0.5)
+
+
 func _on_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/test_level.tscn")
 
@@ -22,4 +30,10 @@ func _on_h_slider_3_value_changed(value: float) -> void:
 
 
 func _on_exit_button_pressed() -> void:
+	var config = ConfigFile.new()
+	config.set_value("Audio", "MasterVolume", $HSlider.value)
+	config.set_value("Audio", "MusicVolume", $HSlider2.value)
+	config.set_value("Audio", "SFXVolume", $HSlider3.value)
+	config.save("user://pepa.txt")
+	
 	get_tree().quit()
