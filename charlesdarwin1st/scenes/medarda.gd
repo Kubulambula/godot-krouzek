@@ -1,6 +1,23 @@
 extends Node2D
 
 
+
+func _physics_process(delta: float) -> void:
+	if get_parent().current_character != "medarda":
+		return
+	
+	if not get_parent().is_on_wall():
+		get_parent().velocity += get_parent().gravity
+	else:
+		get_parent().velocity.y = 0
+	
+	if Input.is_action_pressed("climb_up"):
+		climb_up()
+	elif Input.is_action_pressed("climb_down"):
+		climb_down()
+	
+
+
 func ability():
 	print("nic neumim")
 
@@ -19,9 +36,7 @@ func bounce():
 	get_parent().velocity = -300 * get_parent().gravity.normalized()
 
 func gravity():
-	print(get_parent().is_on_wall())
-	if not get_parent().is_on_wall():
-		get_parent().velocity += get_parent().gravity
+	pass
 
 func run(direction):
 	get_parent().velocity.x = direction * 300

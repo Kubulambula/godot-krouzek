@@ -25,4 +25,4 @@ position = Vector2(418, 90)
 position = Vector2(585, 148)
 
 [node name="BreakBox" parent="." instance=ExtResource("5_1srxc")]
-position = Vector2(614, 151)
+position = Vector2(512, 112)

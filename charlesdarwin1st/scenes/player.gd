@@ -63,11 +63,7 @@ func _physics_process(_delta: float) -> void:
 	# Handle jump
 	if Input.is_action_just_pressed("jump"):
 		characters[current_character].jump()
-	
-	if Input.is_action_pressed("climb_up"):
-		characters[current_character].climb_up()
-	elif Input.is_action_pressed("climb_down"):
-		characters[current_character].climb_down()
+
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -77,11 +73,16 @@ func _physics_process(_delta: float) -> void:
 			$Timer.wait_time = 0.2
 			$Timer.start()
 			play_random_sound(step_sounds)
-		#$AnimatedSprite2D.play("run")
+		
 		characters[current_character].run(direction)
 		characters[current_character].run_animation()
+		
+		if direction == 1:
+			$AnimatedSprite2D.flip_h = true
+		elif direction == -1:
+			$AnimatedSprite2D.flip_h = false
+		
 	else:
-		#$AnimatedSprite2D.play("idle")
 		velocity.x = 0
 		characters[current_character].idle_animation()
 	

@@ -9,8 +9,9 @@
 [ext_resource type="Script" path="res://scenes/borivoj.gd" id="5_6xc2n"]
 [ext_resource type="Script" path="res://scenes/medarda.gd" id="6_4h6xi"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nvutp"]
-size = Vector2(20, 23)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ohxbq"]
+radius = 9.0
+height = 23.0
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 collision_layer = 3
@@ -31,15 +32,15 @@ script = ExtResource("5_6xc2n")
 [node name="Medarda" type="Node2D" parent="."]
 script = ExtResource("6_4h6xi")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_nvutp")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = ExtResource("1_vvgc3")
 animation = &"idle_syd"
 autoplay = "idle_darwin"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("CapsuleShape2D_ohxbq")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)

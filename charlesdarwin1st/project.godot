@@ -28,7 +28,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/gdshell/plugin.cfg")
+enabled=PackedStringArray()
 
 [input]
 
