@@ -12,11 +12,13 @@ var current_character = "darwin"
 @onready var characters = {
 	"darwin": $Darwin,
 	"karel": $Karel,
-	"syd": $Syd
+	"syd": $Syd,
+	"borivoj": $Borivoj,
+	"medarda": $Medarda
 }
 
 
-var gravity = Vector2(0, 500)
+var gravity = Vector2(0, 10)
 #Vector2(0, -500)
 
 var hp = 100
@@ -40,16 +42,17 @@ func switch_characters():
 	elif Input.is_action_just_pressed("character3"):
 		switch_to_character("karel")
 	elif Input.is_action_just_pressed("character4"):
-		print("character 4")
+		switch_to_character("borivoj")
+	elif Input.is_action_just_pressed("character5"):
+		switch_to_character("medarda")
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	switch_characters()
 	
 	UI.ui_scene.set_hp(hp)
 	# Add the gravity.
-	#if not is_on_floor():
-	velocity += gravity * delta
+	characters[current_character].gravity()
 	
 	if Input.is_action_just_pressed("take_damage"):
 		hp = hp - 10
@@ -58,12 +61,17 @@ func _physics_process(delta: float) -> void:
 		characters[current_character].ability()
 	
 	# Handle jump
-	if Input.is_action_just_pressed("jump") and (is_on_floor() or is_on_ceiling()):
+	if Input.is_action_just_pressed("jump"):
 		characters[current_character].jump()
+	
+	if Input.is_action_pressed("climb_up"):
+		characters[current_character].climb_up()
+	elif Input.is_action_pressed("climb_down"):
+		characters[current_character].climb_down()
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis("ui_left", "ui_right")
+	var direction = Input.get_axis("walk_left", "walk_right")
 	if direction:
 		if $Timer.is_stopped():
 			$Timer.wait_time = 0.2

@@ -5,10 +5,20 @@ func ability():
 	pass
 
 func jump():
-	get_parent().velocity = -100 * get_parent().gravity.normalized()
+	if get_parent().is_on_floor():
+		get_parent().velocity = -100 * get_parent().gravity.normalized()
+
+func climb_up():
+	pass
+
+func climb_down():
+	pass
 
 func bounce():
 	get_parent().velocity = -300 * get_parent().gravity.normalized()
+
+func gravity():
+	get_parent().velocity += get_parent().gravity
 
 func run(direction):
 	get_parent().velocity.x = direction * 150
