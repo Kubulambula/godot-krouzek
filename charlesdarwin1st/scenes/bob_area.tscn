@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c42kfw3hyrphr"]
+
+[ext_resource type="Script" path="res://scenes/bob_area.gd" id="1_c86ry"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g1260"]
+
+[node name="BobArea" type="Area2D"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_c86ry")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_g1260")
